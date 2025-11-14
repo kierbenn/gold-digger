@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rye&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Gold Digger</title>
+</head>
+<body class="bg-gray-800 text-yellow-500 text-center font-[Open_Sans] md:mt-5">
+    <section class="flex flex-col max-w-[500px] mx-auto bg-slate-900 p-8 gap-4 rounded-t-lg">
+        <header>
+            <h1 class="text-5xl text-bold font-[Rye] py-2 md:py-4">GoldDigger</h1>
+            <img class="p-10" src="/gold-bars.png" alt="">
+        </header>
+        <main>
+            <form id="invest-submit" class="flex flex-col gap-8">
+                <div class="flex flex-col gap-1 relative">
+                    <span class="flex items-center text-yellow-400 text-sm font-medium absolute top-[-10px] left-10 bg-slate-900 px-2">
+                        Live price
+                        <span class="relative flex size-3 ml-2">
+                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                        </span>
+                    </span>
+                    <div class="flex items-center border-2 border-yellow-400 rounded-md overflow-hidden bg-transparent">
+                        <span class="px-3 text-yellow-400 text-lg font-semibold">$</span>
+                        <div 
+                        class="w-full bg-transparent text-gray-300 text-lg px-3 py-2 focus:outline-none placeholder-gray-500 text-left"
+                        id="gold-price"
+                        >Loading...</div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 relative">
+                    <label class="text-yellow-400 text-sm font-medium absolute top-[-10px] left-10 bg-slate-900 px-2">Amount to invest</label>
+                    <div class="flex items-center border-2 border-yellow-400 rounded-md overflow-hidden bg-transparent">
+                        <span class="px-3 text-yellow-400 text-lg font-semibold">$</span>
+                        <input 
+                        type="number" 
+                        step="0.01" 
+                        value="100.00"
+                        class="w-full bg-transparent text-gray-300 text-lg px-3 py-2 focus:outline-none placeholder-gray-500"
+                        placeholder="0.00"
+                        id="amount-invest"
+                        />
+                    </div>
+                </div>
+                <button
+                    class="py-3 px-5 rounded-md bg-yellow-500 text-black text-2xl font-normal"
+                >Invest Now!</button>
+            </form>
+        </main>
+    </section>
+    
+    <footer class="text-black bg-yellow-700 max-w-[500px] rounded-b-lg mx-auto text-sm p-1">
+        <p>* 1oz = 1 troy ounce of 24 Carat Gold</p>
+    </footer>
+    <div 
+        class="absolute top-0 left-0 bottom-0 right-0 flex justify-center align-center p-4 hidden"
+        id="modal-container"
+    >
+        <div 
+        id="modal"
+        class="border-2 border-yellow-700 p-8 m-4 max-w-[450px] flex flex-col gap-6 rounded-lg m-auto bg-gray-800 justify-center"
+    >
+        <h2 class="text-2xl">Summary</h2>
+        <p></p>
+        <form id="summary-submit" class="flex flex-col gap-4">
+            <label>Email receipt
+            <input type="checkbox" name="email-check" id="email-check"></label>
+            <div id="email-container" class="flex flex-col gap-1 relative hidden">
+                <label class="text-yellow-400 text-sm font-medium absolute top-[-10px] left-10 bg-slate-900 px-2">Email address</label>
+                <div class="flex items-center border-2 border-yellow-400 rounded-md overflow-hidden bg-transparent">
+                    <input 
+                    type="email" 
+                    class="w-full bg-transparent text-gray-300 text-lg px-3 py-2 focus:outline-none placeholder-gray-500"
+                    name="email"
+                    id="email"
+                    />
+                </div>
+            </div>
+            <button
+                id="modal-btn"
+                type="submit"
+                class="border-2 border-white px-10 py-3 bg-yellow-500 text-black rounded-lg mx-auto"
+            >OK</button>
+        </form>
+    </div>
+    </div>
+    <script type="module" src="/goldPrice.js"></script>
+    <script type="module" src="/investSubmit.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+.out/
+.next/
+.cache/
+.temp/
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Coverage from testing
+coverage/
+
+# PM2 logs
+pids
+*.pid
+*.seed
+
+# Lockfiles (if you want to ignore specific ones based on your package manager, otherwise keep them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+
