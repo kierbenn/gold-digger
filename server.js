@@ -22,7 +22,7 @@ const server = http.createServer( async (req, res) => {
         
         if (req.url === '/email') {
             
-            console.log("send email", data)
+            //console.log("send email", data)
             // nodemailer setup with gmail App password
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -39,17 +39,17 @@ const server = http.createServer( async (req, res) => {
                 text: `Your purchase is complete! You've bought ${(data.amount/data.price).toFixed(4)} ozt of gold for $${data.amount} AUD.`
             };
 
-            transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log('Email sent: ' + info.response);
-                }
-            })
+            try {
+                const info = await transporter.sendMail(mailOptions)
+                data.sent = info.response
+            } catch (error) {
+                data.error = error
+            }
             // send back res
             res.statusCode = 201
             res.setHeader('Content-Type', 'application/json')
-            return res.end(body)
+            console.log('what is data ', data)
+            return res.end(JSON.stringify(data))
 
         } else {
             const historyFile = path.join(__dirname, 'data', 'sale-history.csv')
