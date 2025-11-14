@@ -64,7 +64,7 @@ const server = http.createServer( async (req, res) => {
     }
 
     
-    if (req.url === "/api/gold") {
+    if (req.method === 'GET' && req.url === "/api/gold") {
 
         console.log('api/gold')
         return await handleGoldPrice(req, res)
